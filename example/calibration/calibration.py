@@ -24,47 +24,47 @@ servo_num = 0
 motor_num = 0
 servo_names = ['direction servo', 'camera pan servo', 'camera tilt servo']
 motor_names = ['left motor', 'right motor']
-servos_cali = [px.dir_cali_val, px.cam_pan_cali_val, px.cam_tilt_cali_val]
+servos_cali = [px.servo_p2_cali_val, px.servo_p0_cali_val, px.servo_p1_cali_val]
 motors_cali = px.cali_dir_value
 servos_offset = list.copy(servos_cali)
 motors_offset = list.copy(motors_cali)
 
 def servos_test():
-    px.set_dir_servo_angle(-30)
+    px.set_servo_p2_angle(-30)
     sleep(0.5)
-    px.set_dir_servo_angle(30)
+    px.set_servo_p2_angle(30)
     sleep(0.5)
-    px.set_dir_servo_angle(0)
+    px.set_servo_p2_angle(0)
     sleep(0.5)
-    px.set_cam_pan_angle(-30)
+    px.set_servo_p0_angle(-30)
     sleep(0.5)
-    px.set_cam_pan_angle(30)
+    px.set_servo_p0_angle(30)
     sleep(0.5)
-    px.set_cam_pan_angle(0)
+    px.set_servo_p0_angle(0)
     sleep(0.5)
-    px.set_cam_tilt_angle(-30)
+    px.set_servo_p1_angle(-30)
     sleep(0.5)
-    px.set_cam_tilt_angle(30)
+    px.set_servo_p1_angle(30)
     sleep(0.5)
-    px.set_cam_tilt_angle(0)
+    px.set_servo_p1_angle(0)
     sleep(0.5)
 
 def servos_move(servo_num, value):
     if servo_num == 0:
-        px.set_dir_servo_angle(value)
+        px.set_servo_p2_angle(value)
     elif servo_num == 1:
-        px.set_cam_pan_angle(value)
+        px.set_servo_p0_angle(value)
     elif servo_num == 2:
-        px.set_cam_tilt_angle(value)
+        px.set_servo_p1_angle(value)
     sleep(0.2)
 
 def set_servos_offset(servo_num, value):
     if servo_num == 0:
-        px.dir_cali_val = value
+        px.servo_p2_cali_val = value
     elif servo_num == 1:
-        px.cam_pan_cali_val = value
+        px.servo_p0_cali_val = value
     elif servo_num == 2:
-        px.cam_tilt_cali_val  = value  
+        px.servo_p1_cali_val  = value  
 
 def servos_reset():
     for i in range(3):
@@ -141,12 +141,12 @@ def cali_helper():
                 key = readchar.readkey()
                 key = key.lower()
                 if key == 'y':
-                    px.dir_servo_calibrate(servos_offset[0])
-                    px.cam_pan_servo_calibrate(servos_offset[1])
-                    px.cam_tilt_servo_calibrate(servos_offset[2])
+                    px.servo_p2_calibrate(servos_offset[0])
+                    px.servo_p0_servo_calibrate(servos_offset[1])
+                    px.servo_p1_servo_calibrate(servos_offset[2])
                     px.motor_direction_calibrate(motor_num +1 , motors_offset[motor_num])
                     sleep(0.2)
-                    servos_offset = [px.dir_cali_val, px.cam_pan_cali_val, px.cam_tilt_cali_val]
+                    servos_offset = [px.servo_p2_cali_val, px.servo_p0_cali_val, px.servo_p1_cali_val]
                     show_info()
                     print('The calibration value has been saved.')
                     break

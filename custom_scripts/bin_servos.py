@@ -1,0 +1,39 @@
+import cv2
+import numpy as np
+from picarx import Picarx
+from time import sleep
+import readchar
+
+manual = '''
+
+Press any key to run the car. Press cmd+C to terminate.
+'''
+
+
+def show_info():
+    print("\033[H\033[J", end='')  # clear terminal windows
+    print(manual)
+
+
+def main():
+    px = Picarx()
+    show_info()
+    try:
+        while True:
+            px.set_servo_p0_angle(0)
+            px.set_servo_p1_angle(0)
+            px.set_servo_p2_angle(0)
+            px.set_servo_p3_angle(0)
+            sleep(1)
+            px.set_servo_p0_angle(180)
+            px.set_servo_p1_angle(180)
+            px.set_servo_p2_angle(180)
+            px.set_servo_p3_angle(180)
+            sleep(1)
+    finally:
+        px.stop()
+        sleep(.2)
+
+
+if __name__ == "__main__":
+    main()

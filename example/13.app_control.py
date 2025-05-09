@@ -1,5 +1,5 @@
 from sunfounder_controller import SunFounderController
-from picarx import Picarx
+from picarx import SmartBin
 from robot_hat import utils, Music
 from vilib import Vilib
 import os
@@ -11,12 +11,12 @@ sleep(0.2)
 
 # init SunFounder Controller class
 sc = SunFounderController()
-sc.set_name('Picarx-001')
-sc.set_type('Picarx')
+sc.set_name('SmartBin-001')
+sc.set_type('SmartBin')
 sc.start()
 
 # init picarx
-px = Picarx()
+px = SmartBin()
 speed = 0
 
 current_line_state = None

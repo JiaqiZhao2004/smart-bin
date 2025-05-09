@@ -1,4 +1,4 @@
-from picarx import Picarx
+from picarx import SmartBin
 from time import sleep
 from robot_hat import Music,TTS
 from vilib import Vilib
@@ -6,7 +6,7 @@ import readchar
 import random
 import threading
 
-px = Picarx()
+px = SmartBin()
 
 music = Music()
 tts = TTS()

@@ -1,11 +1,11 @@
-from picarx import Picarx
+from picarx import SmartBin
 import time
 
 
 if __name__ == "__main__":
     try:
         # init picarx
-        px = Picarx()
+        px = SmartBin()
 
         # test motor
         px.forward(30)

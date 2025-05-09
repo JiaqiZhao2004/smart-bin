@@ -12,15 +12,15 @@
         and the background gray value.
 
 '''
-from picarx import Picarx
+from picarx import SmartBin
 from time import sleep
 from robot_hat import TTS
 
 tts = TTS()
 tts.lang("en-US")
 
-px = Picarx()
-# px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
+px = SmartBin()
+# px = SmartBin(grayscale_pins=['A0', 'A1', 'A2'])
 # manual modify reference value
 px.set_cliff_reference([200, 200, 200])
 

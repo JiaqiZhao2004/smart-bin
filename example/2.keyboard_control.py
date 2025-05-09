@@ -1,4 +1,4 @@
-from picarx import SmartBin
+from picarx import Picarx
 from time import sleep
 import readchar
 
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     try:
         pan_angle = 0
         tilt_angle = 0
-        px = SmartBin()
+        px = Picarx()
         show_info()
         while True:
             key = readchar.readkey()

@@ -1,8 +1,8 @@
-from picarx import SmartBin
+from picarx import Picarx
 from time import sleep
 from vilib import Vilib
 
-px = SmartBin()
+px = Picarx()
 
 def clamp_number(num,a,b):
   return max(min(num, max(a, b)), min(a, b))

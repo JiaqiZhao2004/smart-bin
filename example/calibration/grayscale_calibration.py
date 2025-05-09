@@ -1,10 +1,10 @@
-from picarx import SmartBin
+from picarx import Picarx
 import time
 import threading
 import readchar 
 import os
 
-px = SmartBin()
+px = Picarx()
 config_path = px.CONFIG
 
 manual = f'''\

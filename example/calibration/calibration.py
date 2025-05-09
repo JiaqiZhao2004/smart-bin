@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from picarx import SmartBin
+from picarx import Picarx
 from time import sleep
 import readchar 
 
@@ -17,7 +17,7 @@ manual = '''
                                       
 '''    
 
-px = SmartBin()
+px = Picarx()
 px_power = 30
 
 servo_num = 0

@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from picarx import SmartBin
+from picarx import Picarx
 from time import sleep
 import readchar
 
@@ -16,7 +16,7 @@ def show_info():
 
 
 def main():
-    px = SmartBin()
+    px = Picarx()
     show_info()
     try:
         while True:

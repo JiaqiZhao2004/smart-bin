@@ -11,7 +11,7 @@ def constrain(x, min_val, max_val):
     return max(min_val, min(max_val, x))
 
 
-class SmartBin(object):
+class Picarx(object):
     CONFIG = '/opt/picar-x/picar-x.conf'
 
     SERVO_P0_MIN = -180
@@ -110,6 +110,6 @@ class SmartBin(object):
 
 
 if __name__ == "__main__":
-    px = SmartBin()
+    px = Picarx()
     time.sleep(1)
     px.stop()

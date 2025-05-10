@@ -5,7 +5,7 @@ from codecs import open
 from os import path
 import sys
 
-sys.path.append('./picarx')
+sys.path.append('./smartbin')
 from version import __version__
 
 here = path.abspath(path.dirname(__file__))
@@ -15,14 +15,14 @@ with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='picarx',
+    name='smartbin',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
     version=__version__,
 
-    description='Picarx gait Library for Raspberry Pi',
+    description='SmartBin gait Library for Raspberry Pi',
     long_description=long_description,
 
     # The project's main homepage.

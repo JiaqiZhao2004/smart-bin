@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from picarx import Picarx
+from smartbin import SmartBin
 from time import sleep
 import readchar
 
@@ -16,7 +16,7 @@ def show_info():
 
 
 def main():
-    px = Picarx()
+    px = SmartBin()
     show_info()
     try:
         while True:
@@ -25,10 +25,10 @@ def main():
             px.set_servo_p2_angle(0)
             px.set_servo_p3_angle(0)
             sleep(1)
-            px.set_servo_p0_angle(180)
-            px.set_servo_p1_angle(180)
-            px.set_servo_p2_angle(180)
-            px.set_servo_p3_angle(180)
+            px.set_servo_p0_angle(10)
+            px.set_servo_p1_angle(10)
+            px.set_servo_p2_angle(10)
+            px.set_servo_p3_angle(10)
             sleep(1)
     finally:
         px.stop()

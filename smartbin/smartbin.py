@@ -11,7 +11,7 @@ def constrain(x, min_val, max_val):
     return max(min_val, min(max_val, x))
 
 
-class Picarx(object):
+class SmartBin(object):
     CONFIG = '/opt/picar-x/picar-x.conf'
 
     SERVO_P0_MIN = -180
@@ -34,7 +34,6 @@ class Picarx(object):
     # config: path of config file
     def __init__(self,
                  servo_pins: list = ['P0', 'P1', 'P2', 'P3'],
-                 motor_pins: list = ['D4', 'D5', 'P13', 'P12'],
                  grayscale_pins: list = ['A0', 'A1', 'A2'],
                  ultrasonic_pins: list = ['D2', 'D3'],
                  config: str = CONFIG,
@@ -52,10 +51,10 @@ class Picarx(object):
         self.servo_p2 = Servo(servo_pins[2])
         self.servo_p3 = Servo(servo_pins[3])
         # get calibration values
-        self.servo_p0_cali_val = float(self.config_flie.get("picarx_servo_p0", default_value=0))
-        self.servo_p1_cali_val = float(self.config_flie.get("picarx_servo_p1", default_value=0))
-        self.servo_p2_cali_val = float(self.config_flie.get("picarx_servo_p2", default_value=0))
-        self.servo_p3_cali_val = float(self.config_flie.get("picarx_servo_p3", default_value=0))
+        self.servo_p0_cali_val = float(self.config_flie.get("smartbin_servo_p0", default_value=0))
+        self.servo_p1_cali_val = float(self.config_flie.get("smartbin_servo_p1", default_value=0))
+        self.servo_p2_cali_val = float(self.config_flie.get("smartbin_servo_p2", default_value=0))
+        self.servo_p3_cali_val = float(self.config_flie.get("smartbin_servo_p3", default_value=0))
 
         # set servos to init angle
         self.servo_p0.angle(self.servo_p0_cali_val)
@@ -65,22 +64,22 @@ class Picarx(object):
 
     def servo_p0_servo_calibrate(self, value):
         self.servo_p0_cali_val = value
-        self.config_flie.set("picarx_servo_p0", "%s" % value)
+        self.config_flie.set("smartbin_servo_p0", "%s" % value)
         self.servo_p0.angle(value)
 
     def servo_p1_servo_calibrate(self, value):
         self.servo_p1_cali_val = value
-        self.config_flie.set("picarx_servo_p1", "%s" % value)
+        self.config_flie.set("smartbin_servo_p1", "%s" % value)
         self.servo_p1.angle(value)
 
     def servo_p2_servo_calibrate(self, value):
         self.servo_p2_cali_val = value
-        self.config_flie.set("picarx_servo_p2", "%s" % value)
+        self.config_flie.set("smartbin_servo_p2", "%s" % value)
         self.servo_p2.angle(value)
 
     def servo_p3_servo_calibrate(self, value):
         self.servo_p3_cali_val = value
-        self.config_flie.set("picarx_servo_p3", "%s" % value)
+        self.config_flie.set("smartbin_servo_p3", "%s" % value)
         self.servo_p3.angle(value)
 
     def set_servo_p0_angle(self, value):
@@ -110,6 +109,6 @@ class Picarx(object):
 
 
 if __name__ == "__main__":
-    px = Picarx()
+    px = SmartBin()
     time.sleep(1)
     px.stop()

@@ -1,6 +1,6 @@
 # https://www.freedesktop.org/software/systemd/man/systemd.service.html
 [Unit]
-Description=picarx service
+Description=smartbin service
 After=multi-user.target
 
 [Service]

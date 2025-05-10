@@ -1,4 +1,4 @@
-from picarx import Picarx
+from smartbin import SmartBin
 import time
 
 POWER = 50
@@ -8,8 +8,8 @@ DangerDistance = 20 # > 20 && < 40 turn around,
 
 def main():
     try:
-        px = Picarx()
-        # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
+        px = SmartBin()
+        # px = SmartBin(ultrasonic_pins=['D2','D3']) # tring, echo
        
         while True:
             distance = round(px.ultrasonic.read(), 2)

@@ -22,15 +22,15 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version=__version__,
 
-    description='SmartBin gait Library for Raspberry Pi',
+    description='smartbin Library for Raspberry Pi',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/sunfounder/piarm',
+    url='https://github.com/JiaqiZhao2004/smart-bin',
 
     # Author details
-    author='SunFounder',
-    author_email='service@sunfounder.com',
+    author='SunFounder, JiaqiZhao2004',
+    author_email='royzhao2004@outlook.com',
 
     # Choose your license
     license='GNU',

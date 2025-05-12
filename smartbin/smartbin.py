@@ -136,7 +136,7 @@ class SmartBin(object):
 
         if pin_number == 0:
             for deg in range(0, -40, -10):
-                self.set_servo_p0_angle(deg)
+                self.set_servo_p2_angle(deg)
                 time.sleep(0.1)
         elif pin_number == 1:
             for deg in range(0, -40, -10):

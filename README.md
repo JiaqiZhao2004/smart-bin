@@ -1,13 +1,6 @@
-# Picar-X
+# Smart Bin
 
-Picar-X Python library for Raspberry Pi.
-
-## Links
-
-- Docs: <https://docs.sunfounder.com/projects/picar-x-v20/en/latest/>
-- Robot Hat: <https://docs.sunfounder.com/projects/robot-hat-v4/en/latest/>
-- Forum: <https://forum.sunfounder.com/>
-- Sunfounder: <https://www.sunfounder.com/>
+Smart Bin Python library for Raspberry Pi, adopted from SunFounder PicarX Python library.
 
 ## Installation
 
@@ -16,20 +9,11 @@ Picar-X Python library for Raspberry Pi.
   <https://docs.sunfounder.com/projects/picar-x-v20/en/latest/python/python_start/install_all_modules.html>
 
 ```bash
-git clone -b v2.0 https://github.com/sunfounder/picar-x.git
-cd picar-x
+git clone -b v2.0 https://github.com/JiaqiZhao2004/smart-bin.git
+cd smart-bin
 sudo python3 setup.py install
 
 ```
-
-## Trouble Shooting
-
-----------------------------------------------
-
-## About SunFounder
-
-SunFounder is a technology company focused on Raspberry Pi and Arduino open source community development. Committed to the promotion of open source culture, we strives to bring the fun of electronics making to people all around the world and enable everyone to be a maker. Our products include learning kits, development boards, robots, sensor modules and development tools. In addition to high quality products, SunFounder also offers video tutorials to help you make your own project. If you have interest in open source or making something cool, welcome to join us!
-
 ----------------------------------------------
 
 ## License
@@ -51,11 +35,3 @@ Mike Huang, Chief Executive Officer
 Email: service@sunfounder.com, support@sunfounder.com
 
 ----------------------------------------------
-
-## Contact us
-
-website:
-    www.sunfounder.com
-
-E-mail:
-    service@sunfounder.com, support@sunfounder.com

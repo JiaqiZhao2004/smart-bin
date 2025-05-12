@@ -14,28 +14,22 @@ Press any key to run the car. Press cmd+C to terminate.
 '''
 
 
+
+
 def show_info():
     print("\033[H\033[J", end='')  # clear terminal windows
     print(manual)
 
 
 def main():
-    px = SmartBin()
-    show_info()
+    bin = SmartBin()
+    sleep(5)
     try:
-        while True:
-            px.set_servo_p0_angle(0)
-            px.set_servo_p1_angle(0)
-            px.set_servo_p2_angle(0)
-            px.set_servo_p3_angle(0)
-            sleep(1)
-            px.set_servo_p0_angle(10)
-            px.set_servo_p1_angle(10)
-            px.set_servo_p2_angle(10)
-            px.set_servo_p3_angle(10)
-            sleep(1)
+        bin.set_servo_p0_angle(-80)
+        #bin.open(0)
+        sleep(3)
     finally:
-        px.stop()
+#        bin.reset()
         sleep(.2)
 
 

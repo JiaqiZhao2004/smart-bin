@@ -180,6 +180,9 @@ class SmartBin(object):
     def get_distance(self):
         return self.ultrasonic.read()
 
+    def is_full(self):
+        return self.get_distance() < 10.0
+
     def stop(self):
         pass
 

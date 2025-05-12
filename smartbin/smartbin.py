@@ -67,6 +67,11 @@ class SmartBin(object):
         self.servo_p2.angle(self.servo_p2_cali_val)
         self.servo_p3.angle(self.servo_p3_cali_val)
 
+        self.servo_p0_angle_ref = 0
+        self.servo_p1_angle_ref = 0
+        self.servo_p2_angle_ref = 0
+        self.servo_p3_angle_ref = 0
+
     def servo_p0_servo_calibrate(self, value):
         self.servo_p0_cali_val = value
         self.config_flie.set("smartbin_servo_p0", "%s" % value)
@@ -89,42 +94,85 @@ class SmartBin(object):
 
     def set_servo_p0_angle(self, value):
         value = constrain(value, self.SERVO_P0_MIN, self.SERVO_P0_MAX)
+        self.servo_p0_angle_ref = int(value)
         self.servo_p0.angle(-1 * (value + -1 * self.servo_p0_cali_val))
 
     def set_servo_p1_angle(self, value):
         value = constrain(value, self.SERVO_P1_MIN, self.SERVO_P1_MAX)
+        self.servo_p1_angle_ref = int(value)
         self.servo_p1.angle(-1 * (value + -1 * self.servo_p1_cali_val))
 
     def set_servo_p2_angle(self, value):
         value = constrain(value, self.SERVO_P2_MIN, self.SERVO_P2_MAX)
+        self.servo_p2_angle_ref = int(value)
         self.servo_p2.angle(-1 * (value + -1 * self.servo_p2_cali_val))
 
     def set_servo_p3_angle(self, value):
         value = constrain(value, self.SERVO_P3_MIN, self.SERVO_P3_MAX)
+        self.servo_p3_angle_ref = int(value)
         self.servo_p3.angle(-1 * (value + -1 * self.servo_p3_cali_val))
 
     def open(self, pin_number):
         if pin_number == 0:
-            self.set_servo_p0_angle(self.P0_OPEN_ANGLE)
+            for deg in range(0, self.P0_OPEN_ANGLE, self.P0_OPEN_ANGLE // 10):
+                self.set_servo_p0_angle(deg)
+                time.sleep(0.1)
         elif pin_number == 1:
-            self.set_servo_p1_angle(self.P1_OPEN_ANGLE)
+            for deg in range(0, self.P1_OPEN_ANGLE, self.P1_OPEN_ANGLE // 10):
+                self.set_servo_p1_angle(deg)
+                time.sleep(0.1)
         elif pin_number == 2:
-            self.set_servo_p2_angle(self.P2_OPEN_ANGLE)
+            for deg in range(0, self.P2_OPEN_ANGLE, self.P2_OPEN_ANGLE // 10):
+                self.set_servo_p2_angle(deg)
+                time.sleep(0.1)
         elif pin_number == 3:
-            self.set_servo_p3_angle(self.P3_OPEN_ANGLE)
+            for deg in range(0, self.P3_OPEN_ANGLE, self.P3_OPEN_ANGLE // 10):
+                self.set_servo_p3_angle(deg)
+                time.sleep(0.1)
+
+        if pin_number == 0:
+            for deg in range(0, -40, -10):
+                self.set_servo_p0_angle(deg)
+                time.sleep(0.1)
+        elif pin_number == 1:
+            for deg in range(0, -40, -10):
+                self.set_servo_p3_angle(deg)
+                time.sleep(0.1)
+        elif pin_number == 2:
+            for deg in range(0, -40, -10):
+                self.set_servo_p0_angle(deg)
+                time.sleep(0.1)
+        elif pin_number == 3:
+            for deg in range(0, -40, -10):
+                self.set_servo_p1_angle(deg)
+                time.sleep(0.1)
 
     def close_all(self):
+        p0_step = self.servo_p0_angle_ref // 10
+        p1_step = self.servo_p1_angle_ref // 10
+        p2_step = self.servo_p2_angle_ref // 10
+        p3_step = self.servo_p3_angle_ref // 10
+
+        for i in range(10):
+            if self.servo_p0_angle_ref != 0:
+                self.set_servo_p0_angle(self.servo_p0_angle_ref - p0_step)
+            if self.servo_p1_angle_ref != 0:
+                self.set_servo_p1_angle(self.servo_p1_angle_ref - p1_step)
+            if self.servo_p2_angle_ref != 0:
+                self.set_servo_p2_angle(self.servo_p2_angle_ref - p2_step)
+            if self.servo_p3_angle_ref != 0:
+                self.set_servo_p3_angle(self.servo_p3_angle_ref - p3_step)
+            time.sleep(0.1)
         self.reset()
 
     def stop(self):
         pass
 
     def reset(self):
-        self.stop()
-        self.set_servo_p0_angle(self.servo_p0_cali_val)
-        self.set_servo_p1_angle(self.servo_p1_cali_val)
-        self.set_servo_p2_angle(self.servo_p2_cali_val)
-        self.set_servo_p3_angle(self.servo_p3_cali_val)
+        self.set_servo_p0_angle(0)
+        self.set_servo_p1_angle(0)
+        self.set_servo_p2_angle(0)
+        self.set_servo_p3_angle(0)
 
 
 if __name__ == "__main__":

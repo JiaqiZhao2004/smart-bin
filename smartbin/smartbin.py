@@ -72,6 +72,10 @@ class SmartBin(object):
         self.servo_p2_angle_ref = 0
         self.servo_p3_angle_ref = 0
 
+        # --------- ultrasonic init ---------
+        trig, echo = ultrasonic_pins
+        self.ultrasonic = Ultrasonic(Pin(trig), Pin(echo, mode=Pin.IN, pull=Pin.PULL_DOWN))
+
     def servo_p0_servo_calibrate(self, value):
         self.servo_p0_cali_val = value
         self.config_flie.set("smartbin_servo_p0", "%s" % value)
@@ -164,6 +168,9 @@ class SmartBin(object):
                 self.set_servo_p3_angle(self.servo_p3_angle_ref - p3_step)
             time.sleep(0.1)
         self.reset()
+
+    def get_distance(self):
+        return self.ultrasonic.read()
 
     def stop(self):
         pass

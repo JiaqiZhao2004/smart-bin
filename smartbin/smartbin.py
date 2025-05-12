@@ -58,7 +58,7 @@ class SmartBin(object):
         # get calibration values
         self.servo_p0_cali_val = float(self.config_flie.get("smartbin_servo_p0", default_value=55.))
         self.servo_p1_cali_val = float(self.config_flie.get("smartbin_servo_p1", default_value=80.))
-        self.servo_p2_cali_val = float(self.config_flie.get("smartbin_servo_p2", default_value=-35.))
+        self.servo_p2_cali_val = float(self.config_flie.get("smartbin_servo_p2", default_value=-25.))
         self.servo_p3_cali_val = float(self.config_flie.get("smartbin_servo_p3", default_value=80.))
 
         # set servos to init angle
@@ -137,18 +137,26 @@ class SmartBin(object):
         if pin_number == 0:
             for deg in range(0, -40, -10):
                 self.set_servo_p2_angle(deg)
+                self.set_servo_p3_angle(deg // 2)
+                self.set_servo_p1_angle(deg // 2)
                 time.sleep(0.1)
         elif pin_number == 1:
             for deg in range(0, -40, -10):
                 self.set_servo_p3_angle(deg)
+                self.set_servo_p0_angle(deg // 2)
+                self.set_servo_p2_angle(deg // 2)
                 time.sleep(0.1)
         elif pin_number == 2:
             for deg in range(0, -40, -10):
                 self.set_servo_p0_angle(deg)
+                self.set_servo_p1_angle(deg // 2)
+                self.set_servo_p3_angle(deg // 2)
                 time.sleep(0.1)
         elif pin_number == 3:
             for deg in range(0, -40, -10):
                 self.set_servo_p1_angle(deg)
+                self.set_servo_p0_angle(deg // 2)
+                self.set_servo_p2_angle(deg // 2)
                 time.sleep(0.1)
 
     def close_all(self):

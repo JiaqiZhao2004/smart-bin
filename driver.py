@@ -1,7 +1,4 @@
-import cv2
-import numpy as np
 from smartbin import SmartBin
-from time import sleep
 import readchar
 
 

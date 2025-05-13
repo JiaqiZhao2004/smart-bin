@@ -70,11 +70,27 @@ def iter_taco():
         cat_name = taco_json["categories"][ann["category_id"]]["name"].lower()
         img_file = RAW/"taco"/"data"/"images"/taco_json["images"][ann["image_id"]]["file_name"]
         yield img_file, cat_name
+def iter_extra():
+    """
+    Yield (filepath, label) for all images under data/raw/compost and data/raw/electronics
+    """
+    for cls in ("compost", "electronics"):
+        folder = RAW/cls
+        if not folder.exists():
+            continue
+        for img_p in folder.rglob("*.jp*g"):
+            yield img_p, cls
+
 
 def main():
     ensure_out()
     m = {alias: cls for cls, aliases in CLASSES.items() for alias in aliases}
-    for img_p, old_label in itertools.chain(iter_trashnet(), iter_taco()):
+    for img_p, old_label in itertools.chain(
+        iter_trashnet(),
+        iter_taco(),
+        iter_extra()
+    ):
+
         cls = m.get(old_label)
         if not cls: continue
         img = cv2.imread(str(img_p))

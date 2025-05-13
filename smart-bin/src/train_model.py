@@ -126,4 +126,4 @@ Path("models").mkdir(exist_ok=True)
 # Keras native format
 model.save("models/model.keras")
 # TensorFlow SavedModel for TFLite conversion
-model.save("models/saved_model", include_optimizer=False, save_format="tf")
+model.save("models/saved_model", include_optimizer=False)
